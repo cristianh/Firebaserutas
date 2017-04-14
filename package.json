@@ -1,0 +1,22 @@
+{
+  "name": "firebaseproyect",
+  "version": "1.0.0",
+  "description": "Proyecto para las rutas de la ciudad con angular y firebase",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cristianh/Firebaseangular/"
+  },
+  "author": "Cristian Hernandez",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "firebase": "^3.7.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1"
+  }
+}

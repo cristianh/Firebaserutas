@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- JavaScript -->
+    <script src="bower_components/alertify-js/build/alertify.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/bootstrap-validator/dist/validator.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <!--<script src="bower_components/platform.js/platform.js"></script>-->
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/place.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/users.js"></script>
+    <script src="js/utils.js"></script>
+     <script src="js/push.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="bower_components/alertify-js/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="bower_components/alertify-js/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="bower_components/alertify-js/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="bower_components/alertify-js/build/css/themes/bootstrap.min.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/stylespage.css">
+    <script>
+        $(document).ready(function() {
+            listenerlogin();
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="loggindiv">
+            <div class="row">
+                <div class="col-lg-6 col-ms-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li class="active">
+                                        <a id="login" href="#">Iniciar sesion</a>
+                                    </li>
+                                    <li>
+                                        <a id="register" href="#">Registrarse</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="login">
+                                <form id="formlogin" data-toggle="validator" role="form">
+                                    <div class="form-group">
+                                        <label for="email">Email :</label>
+                                        <input type="email" placeholder="Email" data-error="Email no debe estar vacio" class="form-control" id="email" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Password:</label>
+                                        <input type="password" placeholder="password" data-error="Password no debe estar vacio" class="form-control" id="pwd" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox"> Remember me</label>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-default">Ingresar</button>
+                                        <!--<button type="button" id="btngoogle" class="btn btn-danger">Google</button>-->
+                                        <!--<button type="button" class="btn btn-primary">Facebook</button>-->
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="register">
+                                <form id="formregister" data-toggle="validator" role="form">
+                                    <div class="form-group">
+                                        <label for="Nombre">Nombre:</label>
+                                        <input type="text" placeholder="Nombre" class="form-control" id="Nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Apellido">Apellido:</label>
+                                        <input type="text" placeholder="Apellido" class="form-control" id="Apellido" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email :</label>
+                                        <input type="email" placeholder="Email" data-error="Email no valido" class="form-control" id="email" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Password:</label>
+                                        <input type="password" data-minlength="6" placeholder="password" class="form-control" id="pwd" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edad">Edad:</label>
+                                        <input type="text" placeholder="Edad" class="form-control" id="Edad">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Registrarme</button>
+
+                                </form>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="center"> Copyright (c) 2017</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+body {
+    font-family: sans-serif, Arial;
+    font-size: 18;
+    background: #eee
+}
+
+.loggindiv {
+    vertical-align: middle;
+    margin: 5% auto;
+    border-radius: 12px 12px
+}
+
+.register {
+    display: none;
+}

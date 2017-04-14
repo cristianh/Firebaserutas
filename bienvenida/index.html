@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- JavaScript -->
+    <script src="../bower_components/alertify-js/build/alertify.min.js"></script>
+    <script src="../bower_components/firebase/firebase.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/bootstrap-validator/dist/validator.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/push.js/push.min.js"></script>
+    <script src="../bower_components/push.js/serviceWorker.js"></script>
+    <!-- Search -->
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- EndSearch --->
+    <!--<script src="bower_components/platform.js/platform.js"></script>-->
+    <script src="../js/app.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/place.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/users.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/push.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../bower_components/alertify-js/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="../bower_components/alertify-js/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="../bower_components/alertify-js/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="../bower_components/alertify-js/build/css/themes/bootstrap.min.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/stylespage.css">
+    <script>
+        $(document).ready(function() {
+            config();
+            addlisters();
+            uploaplace(5);
+            uploadinfouser();
+            searchplace();
+        });
+
+    </script>
+
+    <style>
+        body {
+            padding: 2%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                    <!--<a class="navbar-brand" href="#">Mi rutas</a>-->
+                    <a id="mensajebienvenida" class="navbar-brand" href="#">Bienvenido </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#"><span class="glyphicon glyphicon-user"  aria-hidden="true">&nbsp;</span>Mi perfil<span class="sr-only">(current)</span></a></li>
+                        <li><a href="../rutasusuario/rutasusuario.html"><span class="glyphicon glyphicon-bed"  aria-hidden="true">&nbsp;</span>Mis rutas</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-bell"  aria-hidden="true">&nbsp;</span>Mis notificaciones&nbsp;<span class="badge">42</span></a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-time"  aria-hidden="true">&nbsp;</span>Horarios de rutas</a></li>
+                    </ul>
+
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="loginout" class="navbar-brand" href="#">Salir</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <label class="hide" for="buscarE">Buscar:</label>
+                            <input type="text" id="buscarE" class="form-control" placeholder="Buscar Barrio o Ruta">
+                        </div>
+                        <button type="submit" class="btn btn-default">Buscar</button>
+                    </form>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <div class="row" ng-controller="loadplace">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <b>Usuario</b>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="infouser">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <b>Mapas de rutas</b>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div id="notyfi">
+
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                <form action='#'>
+                                    <label for="Rutas">Seleccion una ruta: </label>
+                                <select id="MapsPlace" class="form-control">
+                                    <option value="Map1">Ruta 18 Norte</option>
+                                    <option value="Map2">Ruta 18 Centro</option>
+                                    <option value="Map3">Ruta 18 Sur</option>
+                                </select>
+                                <button onclick="setPlaceMaps(this.id)" type="submit" class="btn btn-success">Ir</button>
+                                </form>
+                            </div>
+                            </div>
+
+                            <div class="container-fluid">
+                                <h1>
+                                    <iframe id="framemap" src="https://www.google.com/maps/d/embed?mid=1Ulfp9APmxCgbR12M4yI8MBB0dOE" width="550" height="300"></iframe>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <div class='btn-group pull-right'>
+                            <button class='btn btn-default btn-sm'  onclick="uploaplace(10)">&larr; Anterior</button>
+                            <button class='btn btn-default btn-sm' onclick="uploaplace(5)">Siguiente &rarr;</button>
+                        </div>
+                            <h5><b>Rutas</b></h5>
+                    </div>
+                    <div class="panel-body">
+                        <div id="rutas">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+
