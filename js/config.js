@@ -11,15 +11,25 @@ var config = function () {
 }
 
 var testplace = function () {
+    var nodoPadre;
+    var nodohijo;
+    var username;
     var commentsRef = firebase.database().ref('rutasusuario');
     commentsRef.on('child_added', function (data) {
-        messajepush("Actualizacion",data.val().id);
+        nodoPadre = data.key;
         //console.log("Se a añadido la siguiente ruta", data.key, data.val(), data.val().id);
-        firebase.database().ref('rutasusuario/' + data.key + '/miruta').once('value').then(function (snapshot) {
-            var username = snapshot.val();
-            console.log(username);
+        /*var commentsmiruta= firebase.database().ref('rutasusuario/' + nodoPadre + '/miruta');
+        commentsmiruta.on('child_added', function (dataChild) {
+            nodohijo = dataChild.key;
+            console.log("Se a añadido la siguiente ruta", dataChild.key, dataChild.val(), dataChild.val().id);
+
+        });*/
+        /*firebase.database().ref('rutasusuario/' + nodoPadre + '/miruta' + nodohijo).once('value').then(function (snapshot) {
+            username = snapshot.val();
+
             // ...
-        });
+        });*/
+
     });
 
     commentsRef.on('child_changed', function (data) {

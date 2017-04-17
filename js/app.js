@@ -27,6 +27,7 @@ var addlisters = function () {
         loginOut();
         window.location = '../index.html';
     });
+    $('[data-toggle="tooltip"]').tooltip();
 }
 
 

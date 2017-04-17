@@ -123,20 +123,25 @@ var deleteplaceuser = function (e) {
     });
 }
 
-var infoUser = function () {
+var infoUserName = function () {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            /*firebase.database().ref('users/' + user.uid).on('value', function (snapshot) {
+            firebase.database().ref('users/' + user.uid).on('value', function (snapshot) {
                 console.log(snapshot.val().nombre);
                 console.log(snapshot.val().edad);
                 $('#mensajebienvenida').append(' ' + snapshot.val().nombre);
-            });*/
+            });
             return snapshot.val().nombre;
         } else {
             // No user is signed in.
         }
     });
 }
+
+var infoUseraddPlace = function (data) {
+
+}
+
 
 var userlogin = function () {
     var user = firebase.auth().currentUser;

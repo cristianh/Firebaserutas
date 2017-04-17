@@ -1,5 +1,7 @@
 var refruta;
 var str = "Norte - Sur";
+var keysPlaceAdd=[];
+
 
 /**
  * Metodo que se encarga de crear y listar todas las rutas.
@@ -216,16 +218,52 @@ $('form').submit(function(e){
 
 var saveconfigplace = function (e) {
     var user = firebase.auth().currentUser;
-    if (!usuario != null) {
-        var id = $(e).attr('id');
-        firebase.database().ref('rutasusuario/' + user.uid + '/miruta').push({
-            id: id
-        }).then(function(){
-            testplace();
-        });
-    } else {
-        // No user is signed in.
-    }
+    var id = $(e).attr('id');
+    var child = String(id).slice(String(id).indexOf("/")+1);
+
+    var ref = firebase.database().ref('rutasusuario/' + user.uid + '/miruta/'+ child);
+    ref.once("value").then(function(snapshot) {
+         if(!snapshot.exists()){
+             if (!usuario != null) {
+                 firebase.database().ref('rutasusuario/' + user.uid + '/miruta/'+ child).set({
+                     id: id
+                 }).then(function(){
+                     if(isMobile.any() ) {
+                         messajepush("Actualizacion", "La ruta:" + " " + child + " " + "se a guadado con exito!");
+                     }else
+                     {
+                         alertify.alert("Actualizacion", "La ruta:" + " " + child + " " + "se a guadado con exito!",function(){
+                             countPlaceAdd();
+                         });
+                     }
+                     testplace();
+                 });
+             }
+
+         }
+         else
+         {
+             if(isMobile.any() ) {
+                 messajepush("Atencion!!!","La ruta:" + " " + child +" "+"ya esta guardada!");
+             }
+             else{
+                 alertify.alert("Atencion!!", child +" "+"ya esta guardada!");
+             }
+
+             //alertify.set('notifier', 'position', 'bottom-right');
+             //alertify.warning("La ruta:" + " " + child +" "+"ya esta guardada!");
+         }
+    });
+
+    //$("#placeadd").append();
+}
+
+
+var deleteallplace = function () {
+    var user = firebase.auth().currentUser;
+    var query = firebase.database().ref('rutasusuario/' + user.uid).child("miruta").remove();
+    $("#rutas").empty();
+    $("#rutas").append("<h3>No tienes ninguna ruta.</h3>");
 }
 
 var deleteplace = function (e) {

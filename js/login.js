@@ -1,10 +1,10 @@
 var login = function (email, pass) {
     firebase.auth().signInWithEmailAndPassword(email, pass).then(function (user) {
-        if(infoUser()== "ADMIN") {
-            console.log("user",infoUser());
+        if(infoUserName()== "ADMIN") {
+            console.log("user",infoUserName());
             window.location = 'bienvenida/index.html';
         }else {
-            console.log("user",infoUser());
+            console.log("user",infoUserName());
             window.location = 'control-panel.html';
         }
     }).catch(function (error) {
@@ -89,11 +89,11 @@ var listenerlogin = function () {
     config();
     if (userlogin()) {
 
-        if(infoUser()== "ADMIN") {
-            console.log("user",infoUser());
+        if(infoUserName()== "ADMIN") {
+            console.log("user",infoUserName());
             window.location = 'bienvenida/index.html';
         }else {
-            console.log("user",infoUser());
+            console.log("user",infoUserName());
             window.location = 'control-panel.html';
         }
     } else {
@@ -125,7 +125,7 @@ var listenerlogin = function () {
             login(email, pass);
         });
         $("#Ingresar").click(function () {
-            infoUser();
+            infoUserName();
         });
     }
 }

@@ -45,9 +45,10 @@
         $(document).ready(function() {
             config();
             addlisters();
-            uploaplace(5);
+            uploaplace(10);
             uploadinfouser();
             searchplace();
+            //countPlaceAdd();
         });
 
     </script>
@@ -80,9 +81,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#"><span class="glyphicon glyphicon-user"  aria-hidden="true">&nbsp;</span>Mi perfil<span class="sr-only">(current)</span></a></li>
-                        <li><a href="../rutasusuario/rutasusuario.html"><span class="glyphicon glyphicon-bed"  aria-hidden="true">&nbsp;</span>Mis rutas</a></li>
+                        <li><a href="../rutasusuario/rutasusuario.html"><span class="glyphicon glyphicon-bed"  aria-hidden="true">&nbsp;</span>Mis rutas <span id="placeadd" class="badge"></span></a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-bell"  aria-hidden="true">&nbsp;</span>Mis notificaciones&nbsp;<span class="badge">42</span></a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-time"  aria-hidden="true">&nbsp;</span>Horarios de rutas</a></li>
+
                     </ul>
 
 
@@ -140,7 +142,7 @@
 
                             <div class="container-fluid">
                                 <h1>
-                                    <iframe id="framemap" src="https://www.google.com/maps/d/embed?mid=1Ulfp9APmxCgbR12M4yI8MBB0dOE" width="550" height="300"></iframe>
+                                    <iframe id="framemap" src="https://www.google.com/maps/d/embed?mid=1Ulfp9APmxCgbR12M4yI8MBB0dOE"></iframe>
                                 </h1>
                             </div>
                         </div>
